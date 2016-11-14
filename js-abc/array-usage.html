@@ -1,0 +1,150 @@
+<script>
+  /* push */
+  testPush();
+  function testPush() {
+    var arr = [1, 2, 3, 4];
+    arr.push(5);
+    console.log('-----testPush');
+    console.log(arr.toString()); // 1,2,3,4,5
+    // from the top info ,we konw method push can change the origin array
+  }
+
+  /* pop */
+  testPop();
+  function testPop(){
+    var arr = [1,2,3,4];
+    var res = arr.pop();
+    console.log('-----testPop');
+    console.log(arr.toString()); // 1,2,3
+    console.log(res); // 4
+    // from the top info ,we konw method pop can change the origin array
+  }
+
+  /* unshift */
+  testUnshift();
+  function testUnshift() {
+    var arr = [1, 2, 3, 4];
+    arr.unshift(0);
+    console.log('-----testUnshift');
+    console.log(arr.toString()); // 0, 1, 2, 3, 4
+    // from the top info ,we konw method unshift can change the origin array
+  }
+
+  /* shift */
+  testShift();
+  function testShift() {
+    var arr = [1, 2, 3, 4];
+    var res = arr.shift(); // it's the same that you deliver more args or not , change the origin array and return the deleted element.
+    console.log('-----testShift');
+    console.log(arr.toString()); // 2,3,4
+    console.log(res); // 1
+  }
+
+  /* concat */
+  testConcat();
+  function testConcat(){
+    var arr = [1,2,3,4];
+    var oth = [5,6,7];
+    var all = arr.concat(oth);
+    console.log('-----testConcat');
+    console.log(all.toString()); // 1,2,3,4,5,6,7
+    console.log(arr.toString()); // 1,2,3,4
+    console.log(oth.toString()); // 5,6,7
+    // concat do not change the origin one.
+  }
+
+  /* join */
+  testJoin();
+  function testJoin(){
+    var arr = [1,2,3,4];
+    var res = arr.join('|');
+    console.log('-----testJoin');
+    console.log(typeof res); // string
+    console.log(res); // 1|2|3|4
+    console.log(arr.toString()); // 1,2,3,4
+    // join do not change the origin one.
+  }
+
+  /* split */
+  testSplit();
+  function testSplit(){
+    var str1 = 'AB AC AD AE';
+    var str2 = 'ZB,ZC,ZD,ZE';
+    var res1 = str1.split(' ');
+    var res2 = str2.split(',');
+    console.log('-----testSplit');
+    console.log(res1); // ["AB", "AC", "AD", "AE"]
+    console.log(res2); // ["ZB", "ZC", "ZD", "ZE"]
+    console.log(str1 + ' => ' + typeof str1); // AB AC AD AE => string
+    console.log(str2 + ' => ' + typeof str2); // ZB,ZC,ZD,ZE => string
+    // split do not change the origin one.
+  }
+
+  /* slice */
+  testSlice();
+  function testSlice(){
+    console.log('-----testSlice');
+    var arr = [1,2,3,4];
+    var res1 = arr.slice(0);
+    var res2 = arr.slice(1);
+    var res3 = arr.slice(-1);
+    var res4 = arr.slice(-2);
+    var res5 = arr.slice(-3);
+    var res6 = arr.slice(1,2);
+    var res7 = arr.slice(0,2);
+    var res8 = arr.slice(10);
+    var res9 = arr.slice(10,11);
+    var res10 = arr.slice(2,8);
+    var res11 = arr.slice(-2,8);
+    console.log(arr); // [1, 2, 3, 4] 
+    console.log(res1); // [1,2,3,4];
+    console.log(res2); // [2,3,4]
+    console.log(res3); // [4]  args -1 return an array only includes the last element
+    console.log(res4); // [3,4]
+    console.log(res5); // [2,3,4]
+    console.log(res6); // [2]
+    console.log(res7); // [1,2]
+    console.log(res8); // []
+    console.log(res9); // []
+    console.log(res10); // [3,4]
+    console.log(res11); // [3,4] 表示从倒数第二个开始往右截 args -2,8 return an array with 
+    // 说明 slice 不操作原数组返回一个新数组 , 参数有一个的时候是截取参数值个组成新数组的意思
+    // 参数有两个表示从第几个截取到第几个组成一个新的数组，含左不含右 ,如果没在范围之内为空
+  }
+
+  /* splice */
+  testSplice();
+  function testSplice(){
+    test1();
+    test2();
+    test3();
+
+    /* 使用负数将从倒数第几个删除一定个数的元素，返回被删除的元素组成的数组 */
+    function test1(){
+      var arr = [1,2,3,4];
+      var res = arr.splice(-3,2);
+      console.log('-----testSplice test1');
+      console.log(res); // [2,3]
+      console.log(arr); // [1,4]
+    }
+
+    function test2(){
+      var arr = [1,2,3,4];
+      var res = arr.splice(1,2);
+      console.log('-----testSplice test2');
+      console.log(res); // [2,3]
+      console.log(arr); // [1,4]
+    }
+
+    /* 第三个参数如果有的话，从被删除的位置向数组添加元素 */
+    function test3(){
+      var arr = [1,2,3,4];
+      var res = arr.splice(1,2,10,11,12);
+      console.log('-----testSplice test3');
+      console.log(res); // [2,3]
+      console.log(arr); // [1,10,11,12,4];
+    }
+
+    /* Current mood : not good */
+  }
+</script>
