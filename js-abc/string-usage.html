@@ -98,16 +98,12 @@
 		console.log(str1.match(str3)); // ["de", index: 3, input: "abcdefg"]
 		console.log(str4.match(regex2)); // ["ab", "ab"]
 
-		// 说明 match 是string实例的一个方法,可以传递一个正则或者是一个字符串
-		// 如果不匹配返回null
-		// 如果匹配，且匹配的是字符串或者不带-g的正则，那么
-		// 在返回的两个对象中，index 属性声明的是匹配文本的起始字符在 stringObject 中的位置，
-		// input 属性声明的是对 stringObject 的引用。
-		// 如果匹配的参数是个带有-g的正则 那么返回的是匹配的字符串的数组，就如最后一个console.log()的结果
-
 		//  match is a method of an instance string , it can take a regular expression or a string as it's arg
 		// if don't match , return null
-		// the code show 
+		// if match , return a array 
+		// the index is the matched string's index
+		// the input is the quote of StringObject
+		// if the arg is a regular expression width '-g' , it will return a array like the last console shows
 	}
 
 	/* replace */
@@ -117,17 +113,17 @@
 		console.log('testReplace');
 		var res1 = str1.replace(/a/,'5');
 		console.log(str1); // abc123
-		console.log(res1); // 5bc123 说明 字符串的replace 方法不改变原值, 返回一个新的值
+		console.log(res1); // 5bc123   method replace do not change the origin string , it'll return a new string
 		var str2 = 'hello world';
 		console.log(str2.replace(/l/g,'3')); // he33o wor3d
 		var str3 = 'ni hao';
-		console.log(str3.replace(/(\w+)\s* \s*(\w+)/,"$2 $1")); // hao ni  说明这个用法是把两个的顺序调换过来
+		console.log(str3.replace(/(\w+)\s* \s*(\w+)/,"$2 $1")); // hao ni   Swap position
 		var str4 = 'ni hao ya';
 		console.log(str4.replace(/(\w+)\s* \s*(\w+) \s*(\w+)/,"$3 $2 $1")); // ya hao ni
 		console.log(str4.replace(/(\w+)\s* \s*(\w+) \s*(\w+)/,"$2 $1 $3")); // hao ni ya
 		console.log(str4.replace(/(\w+)\s* \s*(\w+) \s*(\w+)/,"$2 $2 $2")); // hao hao hao
 		var str5 = '"a", "b"';
-		console.log(str5.replace(/"([^"]*)"/g, "'$1'")); // 'a', 'b' 现在这个还是不太明白 mark 一下
+		console.log(str5.replace(/"([^"]*)"/g, "'$1'")); // 'a', 'b' 
 		var str6 =  'aaa bbb ccc';
 		res6 = str6.replace(/\b\w+\b/g, function(word){
 			return word.substring(0,1).toUpperCase()+word.substring(1);}
@@ -141,76 +137,127 @@
 		var str = 'ab123cd1';
 		var res1 = str.search('1');
 		console.log('test search');
-		console.log(str); // ab123cd  说明 search 不操作本身，只是返回一个符合条件的下标
+		console.log(str); // ab123cd1  method search do not change the original string , and return a matched index
 		console.log(res1); // 2
-		console.log(str.search(/1/g)); // 2   此处说明 search 方法将忽略/g ，只返回第一个。
-		console.log(str.search(/A/)); // -1  此处说明 search 方法对大小写敏感。
-	}
-
-	/* slice */
-	testSlice();
-	function testSlice(){
-
+		console.log(str.search(/1/g)); // 2  method search will ignore '-g' ,only return the first matched element's index
+		console.log(str.search(/A/)); // -1  method search has case sensitivity 
 	}
 
 	/* small */
 	testSmall();
 	function testSmall(){
 		var str = 'hello world';
-		document.write('<div>' + str + '</div>');  // chrome 浏览器 默认字体是18px
-		document.write('<span>' + str + '</span><br>');  // 默认字体是16px
-		document.write(str.small());  // 此处显示13px  此方法不常用
+		document.write('<div>' + str + '</div>');  // div browser chrome default font-size 18px
+		document.write('<span>' + str + '</span><br>');  // span default font-size 16px
+		document.write(str.small());  // 13px
 	}
 
 	/* slice */
 	testSlice();
 	function testSlice(){
 		var str = 'abcde';
-		var res = '';
+		console.log('testSlice----------');
+		console.log(str.slice(0,1)); // a
+		console.log(str); // abcde
+		console.log(str.slice(1,100)); // bcde
+		console.log(str.slice(-2)); // de
+		console.log(str.slice(-2,1)); // ''
+		console.log(str.slice(-2,8)); // de
+		console.log(str.slice(3,2)); // '' 
+		console.log(str.slice(3,-2)); // '' 
+		
 	}
 
-	/* split */
-	function testSplit(){
+	/* string has no method of splice */
 
+	/* split */
+	testSplit();
+	function testSplit(){
+		var str = 'abc';
+		console.log('testSplit---------');
+		console.log(str.split('')); // ['a','b','c'];
+		console.log(str); // abc
+		console.log(str.split('',2)); // ['a','b'];
+		console.log(str.split('',1)); // ['a']
+		console.log(str.split('',0)); // []
+		console.log(str.split('',-1)); // ['a','b','c']
 	}
 
 	/* strike */
+	testStrike();
 	function testStrike(){
-
+		var str = 'abc';
+		console.log('testStrike----------');
+		console.log(str.strike()); //  <strike>abc</strike> 
 	}
 
 	/* sub */
+	testSub();
 	function testSub(){
-
+		var str = 'abc';
+		console.log('testSub--------------');
+		console.log(str.sub()); // <sub>abc</sub>
 	}
 
 	/* substr */
+	testSubstr();
 	function testSubstr(){
-
+		var str = 'abc';
+		console.log('testSubstr------------');
+		console.log(str.substr(0,2)); // ab     usage str.subStr(str,length);
+		console.log(str.substr(1,10)); // bc
+		console.log(str.substr(1,-2)); // ''
+		console.log(str.substr(0)); // abc
+		console.log(str.substr(-1)); // c
+		console.log(str.substr(-2)); // bc
+		console.log(str.substr(-20)); // abc
 	}
 
 	/* sup */
-	function 	testSup(){
-
+	testSup();
+	function testSup(){
+		var str = 'abc';
+		console.log('testSup------------');
+		console.log(str.sup()); // <sup>abc</sup>
 	}
 
 	/* toLowerCase */
+	testToLowerCase();
 	function testToLowerCase(){
-
+		var str = 'abC';
+		console.log('testToLowerCase------------');
+		console.log(str.toLowerCase()); // abc
 	}
 
 	/* toUpperCase */
+	testToUpperCase();
 	function testToUpperCase(){
-
+		var str = 'abc';
+		console.log('testToUpperCase------------');
+		console.log(str.toUpperCase()); // ABC
 	}
 
 	/* toString */
+	testToString();
 	function testToString(){
-
+		var a = 123;
+		var b = [1,2,3];
+		var c = /c/;
+		console.log(a.toString()); // 123
+		console.log(b.toString()); // 1,2,3
+		console.log(c.toString()); // /c/
 	}
 
 	/* valueOf() */
+	testValueOf();
 	function testValueOf(){
-
+		var obj = {"name":"test"};
+		var arr = [1,1,1];
+		var str = '1,2,3';
+		var num = 15;
+		console.log(typeof obj.valueOf()); // object  return to it self 
+		console.log(typeof arr.valueOf()); // object
+		console.log(typeof str.valueOf()); // string
+		console.log(typeof num.valueOf()); // number
 	}
 </script>
