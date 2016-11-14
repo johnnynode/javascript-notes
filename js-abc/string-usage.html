@@ -9,7 +9,7 @@
 		console.log(str.charAt(2)); // c
 		console.log(str.charAt(-1)); // ''
 		console.log(str.charAt(10)); // ''
-		// 说明，charAt方法，如果索引参数在0到length之间，返回长度为1的字符，否则返回一个空字符串
+		// if the arg is between 0 and the string length ,then it will return a character with length 1
 	}
 
 	/* charCodeAt */
@@ -21,7 +21,7 @@
 		console.log(str.charCodeAt(2)); // 99
 		console.log(str.charCodeAt(-1)); // NaN
 		console.log(str.charCodeAt(100)); // NaN
-		// 说明，charCodeAt方法，返回索引所在那个字符对应的 Unicode 编码
+		// return a unicode of the character corresponding to the arg(index)
 	}
 
 	/* concat */
@@ -35,7 +35,8 @@
 		console.log(str1.concat(str2,str3)); // abcdef
 		console.log(str1); // ab
 		console.log(str2); // cd
-		// 说明 concat 连接两个或多个字符串，返回一个新的字符串，不改变原字符串
+		// method concat do not change the origin string 
+		// it will take the two and form a new one
 	}
 
 	/* fromCharCode */
@@ -46,7 +47,7 @@
 		console.log(String.fromCharCode(97)); // a
 		console.log(String.fromCharCode('97')); // a
 		console.log(String.fromCharCode(72,69,76,76,79)); // HELLO
-		// 说明从一个或多个unicode 编码中返回一个字符串 ， 不常用
+		// return a character string 
 	}
 
 	/* indexOf */
@@ -62,7 +63,7 @@
 		console.log(res2); // 3
 		console.log(res3); // -1
 		console.log(res4); // -1
-		// 说明 针对一个或者多个字符的查找，不匹配返回-1，匹配返回字符所在的索引
+		// if find one match ,return the matched element's index , otherwise return -1
 	}
 
 	/* lastIndexOf */
@@ -78,7 +79,7 @@
 		console.log(res2); // -1
 		console.log(res3); // -1
 		console.log(res4); // -1
-		// 说明 从右向左数，找到返回当前字符的索引，找不到返回-1
+		// it will start from the right side , same as method indexOf
 	}
 
 	/* match */
@@ -103,6 +104,10 @@
 		// 在返回的两个对象中，index 属性声明的是匹配文本的起始字符在 stringObject 中的位置，
 		// input 属性声明的是对 stringObject 的引用。
 		// 如果匹配的参数是个带有-g的正则 那么返回的是匹配的字符串的数组，就如最后一个console.log()的结果
+
+		//  match is a method of an instance string , it can take a regular expression or a string as it's arg
+		// if don't match , return null
+		// the code show 
 	}
 
 	/* replace */
