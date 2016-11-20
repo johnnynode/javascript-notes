@@ -1,45 +1,4 @@
 <script>
-  /* push */
-  testPush();
-  function testPush() {
-    var arr = [1, 2, 3, 4];
-    arr.push(5);
-    console.log('-----testPush');
-    console.log(arr.toString()); // 1,2,3,4,5
-    // from the top info ,we konw method push can change the origin array
-  }
-
-  /* pop */
-  testPop();
-  function testPop(){
-    var arr = [1,2,3,4];
-    var res = arr.pop();
-    console.log('-----testPop');
-    console.log(arr.toString()); // 1,2,3
-    console.log(res); // 4
-    // from the top info ,we konw method pop can change the origin array
-  }
-
-  /* unshift */
-  testUnshift();
-  function testUnshift() {
-    var arr = [1, 2, 3, 4];
-    arr.unshift(0);
-    console.log('-----testUnshift');
-    console.log(arr.toString()); // 0, 1, 2, 3, 4
-    // from the top info ,we konw method unshift can change the origin array
-  }
-
-  /* shift */
-  testShift();
-  function testShift() {
-    var arr = [1, 2, 3, 4];
-    var res = arr.shift(); // it's the same that you deliver more args or not , change the origin array and return the deleted element.
-    console.log('-----testShift');
-    console.log(arr.toString()); // 2,3,4
-    console.log(res); // 1
-  }
-
   /* concat */
   testConcat();
   function testConcat(){
@@ -65,19 +24,41 @@
     // join do not change the origin one.
   }
 
-  /* split */
-  testSplit();
-  function testSplit(){
-    var str1 = 'AB AC AD AE';
-    var str2 = 'ZB,ZC,ZD,ZE';
-    var res1 = str1.split(' ');
-    var res2 = str2.split(',');
-    console.log('-----testSplit');
-    console.log(res1); // ["AB", "AC", "AD", "AE"]
-    console.log(res2); // ["ZB", "ZC", "ZD", "ZE"]
-    console.log(str1 + ' => ' + typeof str1); // AB AC AD AE => string
-    console.log(str2 + ' => ' + typeof str2); // ZB,ZC,ZD,ZE => string
-    // split do not change the origin one.
+  /* pop */
+  testPop();
+  function testPop(){
+    var arr = [1,2,3,4];
+    var res = arr.pop();
+    console.log('-----testPop');
+    console.log(arr.toString()); // 1,2,3
+    console.log(res); // 4
+    // from the top info ,we konw method pop can change the origin array
+  }
+
+  /* push */
+  testPush();
+  function testPush() {
+    var arr = [1, 2, 3, 4];
+    arr.push(5);
+    console.log('-----testPush');
+    console.log(arr.toString()); // 1,2,3,4,5
+    // from the top info ,we konw method push can change the origin array
+  }
+
+  /* reverse */
+  testReverse();
+  function testReverse(){
+
+  }
+
+  /* shift */
+  testShift();
+  function testShift() {
+    var arr = [1, 2, 3, 4];
+    var res = arr.shift(); // it's the same that you deliver more args or not , change the origin array and return the deleted element.
+    console.log('-----testShift');
+    console.log(arr.toString()); // 2,3,4
+    console.log(res); // 1
   }
 
   /* slice */
@@ -114,7 +95,12 @@
     // if there is only one argument , it's means take the num(arg value) of the array , and form a new array
     // if the args are m and n ,besides m < n ,then it will form a new array of the element indexed m to the element indexed n 
     // includes the element indexed m but not includes the element indexed n
-  
+  }
+
+  /* sort */
+  testSort();
+  function testSort(){
+
   }
 
   /* splice */
@@ -150,5 +136,39 @@
     }
 
     // from the top info , it tell us the method splice will change the origin array
+  }
+
+  /* toSource */
+  testToSource();
+  function testToSource(){
+
+  }
+
+  /* toString */
+  testToString();
+  function testToString(){
+
+  }
+
+  /* toLocaleString */
+  testToLocaleString();
+  function testToLocaleString(){
+
+  }
+
+  /* unshift */
+  testUnshift();
+  function testUnshift() {
+    var arr = [1, 2, 3, 4];
+    arr.unshift(0);
+    console.log('-----testUnshift');
+    console.log(arr.toString()); // 0, 1, 2, 3, 4
+    // from the top info ,we konw method unshift can change the origin array
+  }
+
+  /* valueOf() */
+  testValueOf();
+  function testValueOf(){
+
   }
 </script>
