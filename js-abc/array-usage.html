@@ -48,7 +48,15 @@
   /* reverse */
   testReverse();
   function testReverse(){
-
+    var arr = new Array(2); // create an array with length of two
+    arr[0] = 'Johnny'; // define the first element
+    arr[1] = 'Lily'; // define the second element
+    arr[2] = 'Tom'; // add new element
+    arr[3] = 'Bily'; // add new element
+    console.log('......testReverse');
+    console.log(arr); // ['Johnny','Lily','Tom','Bily'];
+    var reArr = arr.reverse();
+    console.log(reArr); // ['Bily','Tom','Lily','Johnny'];
   }
 
   /* shift */
@@ -100,7 +108,25 @@
   /* sort */
   testSort();
   function testSort(){
-
+    var arr1 = ['cc','dd','aa','bb'];
+    var arr2 = ['3','6','7','2'];
+    var arr3 = [9,7,0,-1];
+    console.log('.........testSort');
+    console.log(arr1.sort()); // ["aa", "bb", "cc", "dd"]
+    console.log(arr2.sort()); // ["2", "3", "6", "7"]
+    console.log(arr3.sort()); // [-1, 0, 7, 9]
+    // the default sort rule is sort by ASCII code 
+    // the other way of sort is deliver a compare function 
+    var compare = function(a,b){
+      return a-b;
+    }
+    var arr4 = ['20','1','-20','5'];
+    console.log(arr4.sort(compare)); // ["-20", "1", "5", "20"]
+    var arr5 = ['a',1,'b','33'];
+    var arr6 = [1,'a','33','b'];
+    console.log(arr5.sort(compare)); // ["a", 1, "b", "33"] no change 
+    console.log(arr6.sort(compare)); // [1, 'a', '33', 'b'] no change 
+    // arr5 and arr6 can not sort because they are in different types , they can not be subtractive
   }
 
   /* splice */
