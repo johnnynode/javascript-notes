@@ -164,10 +164,24 @@
     // from the top info , it tell us the method splice will change the origin array
   }
 
-  /* toSource */
+  /* toSource usage : object.toSource() only supported by Firefox */
   testToSource();
   function testToSource(){
-
+    console.log('........testToSource');
+    // please use Firefox to test the code below
+    function employee(name,job,born) {
+      this.name=name;
+      this.job=job;
+      this.born=born;
+    }
+    var bill=new employee("Bill Gates","Engineer",1985);
+    var arr1 = [0];
+    var arr2 = {name:"johnny"};
+    var isFireFox = navigator.userAgent.indexOf('Firefox') != -1;
+    if(!isFireFox) return console.log('your browser not support this method!');
+    console.log(bill.toSource()); // ({name:"Bill Gates", job:"Engineer", born:1985})
+    console.log(arr1.toSource()); // [0]
+    console.log(arr2.toSource()); // ({name:"johnny"})
   }
 
   /* toString */
