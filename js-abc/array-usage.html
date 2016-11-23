@@ -187,13 +187,20 @@
   /* toString */
   testToString();
   function testToString(){
-
+    console.log('......testToString');
+    var arr1 = [0,2];
+    console.log(arr1.toString()); // 0,2
+    console.log(arr1.join()); // 0,2
+    var arr2 = [{},{}];
+    console.log(arr2.toString()); // [object Object],[object Object]
   }
 
   /* toLocaleString */
   testToLocaleString();
   function testToLocaleString(){
-
+    console.log('.......testToLoacleString()');
+    var arr = ['small','big'];
+    console.log(arr.toLocaleString()); // small,big
   }
 
   /* unshift */
@@ -209,6 +216,10 @@
   /* valueOf() */
   testValueOf();
   function testValueOf(){
-
+    console.log('........testValueOf');
+    var arr = [1,2,3];
+    console.log(arr.valueOf()); // [1,2,3]
+    var arr1 = [{},{}];
+    console.log(arr1.valueOf()); // It's should be like this [{},{}];
   }
 </script>
