@@ -5,10 +5,105 @@
     <title>dom operation</title>
 </head>
 <body>
+    <!-- test1 get parentNode -->
     <div class='part1'>
+        <div class="part1-son">
+            <div class="part1-grandson" id='test1'></div>
+        </div>
     </div>
+    <!-- test2 get Sibling -->
+    <div class="part2">
+        <div title='p2-s1' class="part2-son1"></div>
+        <div title='p2-s2' class="part2-son2" id='test2'></div>
+        <div title='p2-s3' class="part2-son3"></div>
+    </div>
+    <!-- test3 get first or last child -->
+    <ul class="part3" id='test3'>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ul>
+    <!-- test4 get children using childNodes -->
+    <ol id='test4'>
+        <li title='test4 first'>
+            <!-- This is comments -->
+            <div name='div1' title='x1'>x1</div>
+            <div name='div2' title='x2'>x2</div>
+            <div name='div3'>x3</div>
+        </li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <!-- test5 get children using childNodes -->
+    <dl id='test5'>
+        <!-- This is comments -->
+        <dt name='dt'></dt>
+        <dd name='dd'></dd>
+        <dd name='dd'></dd>
+        <dd name='dd'></dd>
+    </dl>
 </body>
 </html>
 <script>
+    /* test1 get parentNode */
+    (function(){
+        var test1 = document.getElementById('test1');
+        console.log(test1.parentNode.className); // part1-son
+    })();
+
+    /* test2 get Sibling */
+    (function(){
+        var test2 = document.getElementById('test2');
+        var next = test2.nextElementSibling || test2.nextSibling;
+        var prev = test2.previousElementSibling || test2.previousSibling;
+        console.log(prev.title); // p2-s1
+        console.log(next.title); // p2-s3
+    })();
+
+    /* test3 get first or last child */
+    (function(){
+        var test3 = document.getElementById('test3');
+        var first = test3.firstElementChild || test3.firstChild;
+        var last = test3.lastElementChild || test3.lastChild;
+        console.log(first.innerHTML); // one
+        console.log(last.innerHTML); // four
+    })();
+
+    /* test4 get children using childNodes */
+    (function(){
+        var test4 = document.getElementById('test4');
+        var theFirst = test4.firstElementChild || test4.firstChild;
+        var theFirstCollection = theFirst.childNodes;
+        console.log(theFirstCollection.length); // 9 (including line break and comments)
+        // do filter to separate by different nodeType
+        var eleArr = [];
+        var attrArr = []; // stroage attr title
+        var textArr = [];
+        for(var k in theFirstCollection){
+            var item = theFirstCollection[k];
+            if(item.nodeType == 1){
+                eleArr.push(item.getAttribute('name'));
+            }
+            if(item.getAttributeNode && item.getAttributeNode('title') && item.getAttributeNode('title').nodeType == 2){
+                attrArr.push(item.getAttribute('title'));
+            }
+            if(item.nodeType == 3){
+                textArr.push(item.nodeValue);
+            }
+        }
+        console.log(eleArr); // ["div1", "div2", "div3"]
+        console.log(attrArr); // ["x1", "x2"]
+        console.log(textArr); // ["↵            ", "↵            ", "↵            ", "↵            ", "↵        "]
+    })();
+
+    // test5 get children using children
+    (function(){
+        var test5 = document.getElementById('test5');
+        console.log(test5.children.length); // 4 (only in ie678 including comments , not including line break)
+    })();
+
 
 </script>
